@@ -1,0 +1,26 @@
+version: '2'
+services:
+    vote:
+        build: ./
+        ports:
+            - "8080:8080"
+        links:
+            - "mysql:mysql"
+        environment:
+            - INNER_MYSQL=true
+            - MYSQL_PORT=3306
+            - MYSQL_USER=ttu
+            - MYSQL_PASS=ttp
+            - MYSQL_DB=tt
+        depends_on:
+            - mysql
+        restart: always
+    mysql:
+        image: "mysql:5.7"
+        environment:
+            - MYSQL_ROOT_PASSWORD=123456
+            - MYSQL_USER=ttu
+            - MYSQL_PASSWORD=ttp
+            - MYSQL_DATABASE=tt
+        ports:
+            - "33061:3306"
