@@ -1,11 +1,11 @@
 let conf = {
 
-	servport: 8080,
+	servport: 8070,
 
 	mysql:{
 		host: "127.0.0.1",
 		port: 3306,
-		database: "xianliao",
+		database: "tt",
 		user: "root",
 		password: "123456"
 	},

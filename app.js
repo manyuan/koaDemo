@@ -9,6 +9,7 @@ const route = require('./route.js')
 const respMsg = require('./app/responses.js')
 
 app.use(async (ctx, next) => {
+    console.log('req url:',ctx.method,ctx.url)
     try{
         await next();
     }catch(e){
@@ -19,6 +20,7 @@ app.use(async (ctx, next) => {
 app.use(serve('./static'));
 
 app.use(route('api','routes'))
+//app.use(route(null,'routes'))
 
 app.use(async (ctx, next) => {
     await next();
@@ -29,6 +31,8 @@ app.use(async (ctx, next) => {
 const http = require('http')
 const httpserv = http.createServer(app.callback());
 
+httpserv.listen(serverport, ()=>console.log('server listen on :',serverport))
+/*
 const inittables = require('./app/mmysql.js').initTables
 inittables().then( () =>
     httpserv.listen(serverport, ()=>console.log('server listen on :',serverport))
@@ -36,6 +40,6 @@ inittables().then( () =>
     console.log('init database error:',e)
     process.exit(-1)
 })
-
+*/
 
 
