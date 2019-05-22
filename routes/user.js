@@ -9,6 +9,12 @@ let user = require('../service/user.js')
 router.post('/', async (ctx, next) => {
     ctx.response.body = respMsg.success('post')
 })
+router.post('/sms', async (ctx, next) => {
+	console.log('---get post body:',ctx.request.body)
+	console.log('---get post files:',ctx.request.files)
+    ctx.response.body = respMsg.success('post')
+})
+
 
 router.get('/', async (ctx, next) => {
     ctx.response.body = respMsg.success('get')

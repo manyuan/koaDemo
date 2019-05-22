@@ -18,7 +18,8 @@
         "url": "https://github.com/manyuan/votesystem.git"
     },
     "dependencies": {
-        "koa": "2.0.1",
+        "koa": "^2.7.0",
+        "koa-body": "^4.1.0",
         "koa-router": "7.0.0",
         "koa-static": "4.0.2",
         "mocha": "^6.0.2",

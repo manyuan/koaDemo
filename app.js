@@ -4,6 +4,7 @@ const Koa = require('koa');
 const app = new Koa();
 
 const serve = require('koa-static');
+const koaBody = require('koa-body')
 const route = require('./route.js')
 
 const respMsg = require('./app/responses.js')
@@ -18,9 +19,10 @@ app.use(async (ctx, next) => {
     }
 })
 app.use(serve('./static'));
+app.use(koaBody({multipart:true}))
 
-app.use(route('api','routes'))
-//app.use(route(null,'routes'))
+//app.use(route('api','routes'))
+app.use(route(null,'routes'))
 
 app.use(async (ctx, next) => {
     await next();
