@@ -1,14 +1,15 @@
 module.exports = function (pre,dir) {
-    let ctldir = dir || './ctrls',
+    let ctldir = dir || 'ctrls',
         router = require('koa-router')();
 
+    ctldir = __dirname + '/' + ctldir
     var files = require('fs').readdirSync(ctldir);
     var js_files = files.filter((f)=>{
         return f.endsWith('.js') && f!='filter.js';
     });
     for (var f of js_files) {
         try{
-            let ctl = require('./'+ctldir + '/' + f);
+            let ctl = require(ctldir + '/' + f);
             let pfx = '/' + f.substring(0,f.length-3);
             if(pre) pfx = '/'+pre + pfx;
             console.log('---add route:',pre,pfx);
